@@ -4,14 +4,11 @@ import 'react-toastify/dist/ReactToastify.css'
 import {withStyles} from '@material-ui/core/styles'
 import Navbar from "./components/Navbar/Navbar";
 import RoutePath from "./lib/RoutePath";
-import LandingPage from "./containers/LandingPage/LandingPage";
 import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 import MomentUtils from "@date-io/moment";
-import LoginContainer from "./containers/LoginContainer/LoginContainer";
 import {ToastContainer} from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 import {connect} from "react-redux";
-import StatsContainer from "./containers/StatsContainer/StatsContainer";
 
 const styles = theme => ({
    root: {
@@ -47,14 +44,15 @@ class App extends Component {
                <BrowserRouter>
                   <Navbar/>
                   <Switch>
+                     <Route exact path={RoutePath.homePath} component={Navbar}/>
                      {/*<Route exact path='/product' component={PresentationPage}/>*/}
                      {/*<Route exact path="/blog/:slug" component={BlogDetailView}/>*/}
                      {/*<PrivateRoute authed={localStorage.getItem('access_token')} path="/my" component={Routes}/>*/}
-                     <Route exact path={RoutePath.loginPath} component={LoginContainer}/>
-                     <PrivateRoute exact path={RoutePath.homePath} authed={this.props.loggedIn}
-                                   component={LandingPage}/>
-                     <PrivateRoute exact path={RoutePath.statsPath} authed={this.props.loggedIn}
-                                   component={StatsContainer}/>
+                     {/*<Route exact path={RoutePath.loginPath} component={LoginContainer}/>*/}
+                     {/*<PrivateRoute exact path={RoutePath.homePath} authed={this.props.loggedIn}*/}
+                     {/*              component={LandingPage}/>*/}
+                     {/*<PrivateRoute exact path={RoutePath.statsPath} authed={this.props.loggedIn}*/}
+                     {/*              component={StatsContainer}/>*/}
                   </Switch>
                </BrowserRouter>
             </MuiPickersUtilsProvider>
