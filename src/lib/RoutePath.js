@@ -6,6 +6,7 @@ class RoutePath {
 
    static signupPath = '/signup';
    static loginPath = '/login';
+   static logoutPath = '/logout';
    static homePath = "";
 
    static navigateTo(props, path) {
