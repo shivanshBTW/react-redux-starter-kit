@@ -16,6 +16,22 @@ const styles = theme => ({
    }
 });
 
+let PrivateRoute = (props) => {
+   let {component: Component, authorized, ...rest} = props;
+   console.log(props);
+   console.log(rest);
+   return (
+      <Route
+         {...rest}
+         component={
+            (props) => authorized
+               ? <Component {...props} {...rest} />
+               : <Redirect to={{pathname: RoutePath.loginPath, state: {from: props.location}}}/>
+         }
+      />
+   )
+};
+
 class App extends Component {
    constructor(props) {
       super(props);
@@ -26,18 +42,6 @@ class App extends Component {
 
    render() {
       const {classes} = this.props;
-      const PrivateRoute = ({component: Component, authed, ...rest}) => {
-         return (
-            <Route
-               {...rest}
-               render={
-                  (props) => authed
-                     ? <Component {...rest} />
-                     : <Redirect to={{pathname: RoutePath.loginPath, state: {from: props.location}}}/>
-               }
-            />
-         )
-      };
       return (
          <div className={classes.root}>
             <MuiPickersUtilsProvider utils={MomentUtils}>
