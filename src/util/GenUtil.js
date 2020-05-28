@@ -1,5 +1,6 @@
 class GenUtil {
     static accessToken = '';
+    static FCMToken = '';
 
     static getAccessToken() {
         return localStorage.getItem('token') || this.accessToken || '';
@@ -10,20 +11,38 @@ class GenUtil {
         this.accessToken = token;
     }
 
-    static removeAccessToken(token) {
-        localStorage.setItem('token', token);
-        this.accessToken = token;
+    static removeAccessToken() {
+        localStorage.removeItem('token');
+        this.accessToken = '';
     }
 
-    static getHeaders() {
+    static getLoginHeaders = async () => {
         return {
-            token: GenUtil.getAccessToken()
+            "Content-Type": "application/json",
         };
-    }
+    };
 
-    // static isAdmin(loggedUser) {
-    //     return loggedUser.role && loggedUser.role === RolesEnum.ADMIN
-    // }
+    static getHeaders = async () => {
+        return {
+            "Content-Type": "application/json",
+            Authorization: await this.getAccessToken()
+        };
+    };
+
+    static async setFCMToken(FCMToken) {
+        this.FCMToken = FCMToken;
+        localStorage.setItem('FCMToken', FCMToken);
+    };
+
+    static async getFCMToken() {
+        this.FCMToken = localStorage.getItem('FCMToken');
+        return this.FCMToken
+    };
+
+    static async removeFCMToken() {
+        localStorage.removeItem('FCMToken');
+        this.FCMToken = 'b';
+    };
 }
 
 export default GenUtil;

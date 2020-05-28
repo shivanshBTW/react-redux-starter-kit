@@ -1,26 +1,21 @@
-import GenUtil from "../util/GenUtil";
-import APIServices from "./APIServices";
-import {HOST} from "../constants";
-import APIPath from "../lib/APIPath";
+import GenUtil from '../util/GenUtil';
+import APIServices from './serviceHelpers/APIServices';
+import {getHost} from '../constants';
+import APIPath from '../lib/APIPath';
 
-class UserService {
+class userService {
     static async login(data) {
         const axiosConfig = {
-            url: `${HOST}${APIPath.loginPath}`,
+            url: `${getHost()}${APIPath.loginPath}`,
             method: 'POST',
             crossDomain: true,
             dataType: 'json',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: GenUtil.getLoginHeaders(),
             cache: false,
             processData: false,
-            data: JSON.stringify(data),
+            data: data,
         };
-        // console.log(axiosConfig.url);
         let sr = await APIServices.request(axiosConfig);
-        // console.log(sr);
-
         if (sr.success) {
             GenUtil.setAccessToken(sr.data);
         }
@@ -29,7 +24,7 @@ class UserService {
 
     static async logout() {
         const axiosConfig = {
-            url: `${HOST}${APIPath.logoutPath}`,
+            url: `${getHost()}${APIPath.logoutPath}`,
             method: 'POST',
             crossDomain: true,
             dataType: 'json',
@@ -50,4 +45,4 @@ class UserService {
     }
 }
 
-export default UserService
+export default userService

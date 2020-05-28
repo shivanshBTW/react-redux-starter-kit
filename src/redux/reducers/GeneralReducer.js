@@ -1,4 +1,4 @@
-import ReduxActionEnum from '../../models/enums/ReduxActionEnum';
+import ReduxActionEnum from '../../models/ReduxActionEnum';
 import generalInitialState from "../states/GeneralInitialState";
 
 const GeneralReducer = (state = generalInitialState, action) => {
