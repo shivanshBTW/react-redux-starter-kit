@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 import withStyles from "@material-ui/core/styles/withStyles";
-import Navbar from "../Navbar/Navbar";
 import Typography from "@material-ui/core/Typography";
 
-let styles = theme => ({
-   root: {
-      margin: theme.spacing(0)
-   }
-});
+const styles = theme => {
+   console.log(theme);
+   return (
+      {
+         root: {
+            margin: theme.spacing(0)
+         }
+      }
+   )
+}
 
 class LandingPage extends Component {
    render() {

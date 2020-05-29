@@ -13,30 +13,23 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 import {CssBaseline} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles";
+import LightStylesConfig from "./lib/LightStylesConfig";
+import DarkStylesConfig from "./lib/DarkStylesConfig";
 
-const lightTheme = createMuiTheme({
-   palette: {
-      type: 'light',
-   },
-   typography: {
-      fontFamily: `"Montserrat", "Helvetica", "Arial", "sans-serif"`
-   }
-});
+const lightTheme = createMuiTheme(LightStylesConfig);
 
-const darkTheme = createMuiTheme({
-   palette: {
-      type: 'dark',
-   },
-   typography: {
-      fontFamily: `"Montserrat", "Helvetica", "Arial", "sans-serif"`
-   }
-});
+const darkTheme = createMuiTheme(DarkStylesConfig);
 
-const styles = theme => ({
-   root: {
-      flexGrow: 1,
-   }
-});
+const styles = theme => {
+   console.log(theme);
+   return (
+      {
+         root: {
+            flexGrow: 1,
+         }
+      }
+   )
+}
 
 const toastConfiguration = {
    autoClose: 2000,
@@ -63,7 +56,8 @@ class App extends Component {
    constructor(props) {
       super(props);
       this.state = {
-         loggedIn: true
+         loggedIn: true,
+         prefersDarkTheme: false
       }
    }
 
@@ -77,8 +71,7 @@ class App extends Component {
       } else {
          return (
             <>
-               {/*<ThemeProvider theme={darkTheme}>*/}
-               <ThemeProvider theme={lightTheme}>
+               <ThemeProvider theme={this.state.prefersDarkTheme ? darkTheme : lightTheme}>
                   <div className={classes.root}>
                      <CssBaseline/>
                      <MuiPickersUtilsProvider utils={MomentUtils}>
