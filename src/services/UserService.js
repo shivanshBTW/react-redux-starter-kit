@@ -1,6 +1,6 @@
 import GenUtil from '../util/GenUtil';
 import APIServices from './serviceHelpers/APIServices';
-import {getHost} from '../constants';
+import {getHost} from '../lib/Constants';
 import APIPath from '../lib/APIPath';
 
 class userService {
