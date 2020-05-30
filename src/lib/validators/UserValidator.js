@@ -1,4 +1,4 @@
-import ValidatorResponse from "./validator.response";
+import ValidatorResponse from "./ValidatorResponse";
 
 class UserValidator {
 

@@ -1,12 +1,10 @@
-let HOST;
-if (process.env.NODE_ENV === 'development') {
-   HOST = "http://192.168.0.80:3000";
-} else if (process.env.NODE_ENV === 'production') {
-   HOST = "http://192.168.0.80:3000";
+
+let getHost = () => {
+   if (process.env.NODE_ENV === 'development') {
+      return 'https://dashboard.awiros.com:3002'
+   } else if (process.env.NODE_ENV === 'production') {
+      return 'https://dashboard.awiros.com:3002'
+   }
 }
 
-let Globals = {
-   offline:false
-};
-
-export {HOST, Globals};
+export {getHost};

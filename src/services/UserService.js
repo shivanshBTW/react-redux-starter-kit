@@ -39,7 +39,6 @@ class userService {
         let sr = await APIServices.request(axiosConfig);
         if (sr.success) {
             GenUtil.removeAccessToken()
-            GenUtil.removeFCMToken();
         }
         return sr;
     }
