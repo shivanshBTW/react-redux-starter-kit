@@ -13,8 +13,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 import {CssBaseline} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles";
-import LightStylesConfig from "./lib/LightStylesConfig";
-import DarkStylesConfig from "./lib/DarkStylesConfig";
+import LightStylesConfig from "./lib/StyleConfigs/ColorsConfig/LightStylesConfig";
+import DarkStylesConfig from "./lib/StyleConfigs/ColorsConfig/DarkStylesConfig";
 
 const lightTheme = createMuiTheme(LightStylesConfig);
 

@@ -1,7 +1,4 @@
-import CommonColorsConfig from "./CommonColorsConfig";
-
-let LightStylesConfig = {
-
+let CommonStylesConfig = {
    breakpoints: {
       keys: [
          'xs',
@@ -18,13 +15,6 @@ let LightStylesConfig = {
          xl: 1920
       }
    },
-
-
-   palette: {
-      type: 'light',
-      ...CommonColorsConfig
-   },
-
 
    typography: {
       htmlFontSize: 16,
@@ -153,7 +143,11 @@ let LightStylesConfig = {
          }
       }
    },
-   overrides: {},
+   overrides: {
+      MuiToolbar: {
+         root: {}
+      }
+   },
    props: {},
    shape: {
       borderRadius: 4
@@ -204,4 +198,4 @@ let LightStylesConfig = {
    ],
 }
 
-export default LightStylesConfig;
+export default CommonStylesConfig;
