@@ -130,8 +130,6 @@ let CommonStylesConfig = {
       tooltip: 1500
    },
 
-
-   direction: 'ltr',
    mixins: {
       toolbar: {
          minHeight: 56,
@@ -139,15 +137,14 @@ let CommonStylesConfig = {
             minHeight: 48
          },
          '@media (min-width:600px)': {
-            minHeight: 64
+            minHeight: 80
          }
-      }
+      },
    },
-   overrides: {
-      MuiToolbar: {
-         root: {}
-      }
-   },
+
+
+   direction: 'ltr',
+   overrides: {},
    props: {},
    shape: {
       borderRadius: 4

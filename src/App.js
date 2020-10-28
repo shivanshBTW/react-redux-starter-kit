@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom'
-import Navbar from "./components/Navbar/Navbar";
 import RoutePath from "./lib/RoutePath";
-import LandingPage from "./components/LandingPage/LandingPage";
 import MomentUtils from "@date-io/moment";
 import {ToastContainer} from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
@@ -15,21 +13,15 @@ import {CssBaseline} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles";
 import LightStylesConfig from "./lib/StyleConfigs/ColorsConfig/LightStylesConfig";
 import DarkStylesConfig from "./lib/StyleConfigs/ColorsConfig/DarkStylesConfig";
+import LandingPage from "./components/LandingPage/LandingPage";
+import Navbar from "./components/Navbar/Navbar";
+import AppStyles from "./AppStyles";
 
 const lightTheme = createMuiTheme(LightStylesConfig);
 
 const darkTheme = createMuiTheme(DarkStylesConfig);
 
-const styles = theme => {
-   console.log(theme);
-   return (
-      {
-         root: {
-            flexGrow: 1,
-         }
-      }
-   )
-}
+const styles = AppStyles
 
 const toastConfiguration = {
    autoClose: 2000,
@@ -62,7 +54,7 @@ class App extends Component {
    }
 
    render() {
-      const {classes} = this.props;
+      const {classes,isDarkMode} = this.props;
       if (this.state.loggedIn === undefined) {
          return (
             <>
@@ -71,7 +63,7 @@ class App extends Component {
       } else {
          return (
             <>
-               <ThemeProvider theme={this.state.prefersDarkTheme ? darkTheme : lightTheme}>
+               <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
                   <div className={classes.root}>
                      <CssBaseline/>
                      <MuiPickersUtilsProvider utils={MomentUtils}>
@@ -79,7 +71,6 @@ class App extends Component {
                            <Navbar/>
                            <Switch>
                               {/*<Route exact path={RoutePath.loginPath} component={LoginContainer}/>*/}
-
                               <PrivateRoute exact path={RoutePath.homePath} authorized={this.props.loggedIn}
                                             component={LandingPage}/>
                               {/*<PrivateRoute exact path={RoutePath.detailedList()} authorized={this.props.loggedIn}*/}
@@ -99,8 +90,9 @@ class App extends Component {
 let mapStateToProps = (state) => {
    return {
       loggedIn: true,
-      // loggedIn: state.loggedIn,
-      // loggedUser: state.loggedUser
+      // loggedIn: state.GeneralReducer.loggedIn,
+      // loggedUser: state.GeneralReducer.loggedUser
+      isDarkMode: state.SettingsReducer.isDarkMode
    }
 };
 

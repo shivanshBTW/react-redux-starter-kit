@@ -6,6 +6,12 @@ let DarkStylesConfig = createMuiTheme({
    palette: {
       type: 'dark',
       ...CommonColorsConfig,
+      primary: {
+         contrastText: "rgba(0, 0, 0, 0.87)",
+         dark: "rgb(100, 141, 174)",
+         light: "rgb(166, 212, 250)",
+         main: "#90caf9"
+      },
       contrastThreshold: 3,
       tonalOffset: 0.2,
       text: {

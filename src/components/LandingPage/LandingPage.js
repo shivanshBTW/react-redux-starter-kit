@@ -1,24 +1,15 @@
 import React, {Component} from 'react';
 import withStyles from "@material-ui/core/styles/withStyles";
-import Typography from "@material-ui/core/Typography";
+import LandingPageStyles from "./LandingPageStyles";
 
-const styles = theme => {
-   console.log(theme);
-   return (
-      {
-         root: {
-            margin: theme.spacing(0)
-         }
-      }
-   )
-}
+let styles = LandingPageStyles;
 
 class LandingPage extends Component {
    render() {
       let {classes} = this.props;
       return (
          <div className={classes.root}>
-            <Typography>LandingPage</Typography>
+            LandingPage
          </div>
       );
    }
