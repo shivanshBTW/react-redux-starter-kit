@@ -29,6 +29,14 @@ class GenUtil {
         };
     };
 
+    static getFormHeaders = async () => {
+        return {
+            "Content-Type": "multipart/form-data",
+            // "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundarykwxaoj0oIR9kCiqN",
+            Authorization: await this.getAccessToken()
+        };
+    };
+
     static async setFCMToken(FCMToken) {
         this.FCMToken = FCMToken;
         localStorage.setItem('FCMToken', FCMToken);
