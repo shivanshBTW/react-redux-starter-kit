@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom'
 import RoutePath from "./lib/RoutePath";
 import MomentUtils from "@date-io/moment";
-import {ToastContainer} from 'react-toastify'
-import "react-toastify/dist/ReactToastify.css";
+import {toast, ToastContainer} from 'material-react-toastify'
+import "material-react-toastify/dist/ReactToastify.css";
 import {connect} from "react-redux";
 import UserActions from "./redux/actions/UserActions";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
@@ -24,9 +24,9 @@ const darkTheme = createMuiTheme(DarkStylesConfig);
 const styles = AppStyles
 
 const toastConfiguration = {
-   autoClose: 2000,
-   draggable: true,
-   pauseOnHover: true
+   autoClose: 20000,
+   // draggable: true,
+   // pauseOnHover: true
    //etc you get the idea
 }
 

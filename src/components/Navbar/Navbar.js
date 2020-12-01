@@ -21,7 +21,7 @@ function Navbar(props) {
                   <MenuIcon/>
                </IconButton>
                <Typography variant="h6" className={classes.title}>
-                  News
+                  React Redux Material-UI Starter Code by <a href="https://www.github.com/shivanshBTW" style={{textDecoration:'none','&::hover':{textDecoration:'underline'}}}>@shivanshBTW</a>
                </Typography>
                <Button color="inherit">Login</Button>
             </Toolbar>
