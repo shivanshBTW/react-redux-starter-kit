@@ -3,7 +3,7 @@ import APIServices from './serviceHelpers/APIServices';
 import {getHost} from '../lib/Constants';
 import APIPath from '../lib/APIPath';
 
-class userService {
+class UserService {
     static async login(data) {
         const axiosConfig = {
             url: `${getHost()}${APIPath.loginPath}`,
@@ -44,4 +44,4 @@ class userService {
     }
 }
 
-export default userService
+export default UserService
