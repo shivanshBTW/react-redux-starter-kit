@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { toast } from 'react-toastify';
+import { toast } from 'material-react-toastify';
 import RoutePath from '../../lib/RoutePath';
 import { connect } from 'react-redux';
 import userService from '../../services/userService';
