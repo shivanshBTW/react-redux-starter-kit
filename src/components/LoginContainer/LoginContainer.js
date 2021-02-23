@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
+
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { toast } from 'material-react-toastify';
-import RoutePath from '../../lib/RoutePath';
-import { connect } from 'react-redux';
-import userService from '../../services/userService';
-import withStyles from '@material-ui/core/styles/withStyles';
-import UserActions from '../../redux/actions/UserActions';
 import LoginContainerStyles from './LoginContainerStyles';
+import RoutePath from '../../lib/RoutePath';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import UserActions from '../../redux/actions/UserActions';
+import UserService from '../../services/UserService';
+import { connect } from 'react-redux';
+import { toast } from 'material-react-toastify';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 let styles = LoginContainerStyles;
 
@@ -44,7 +45,7 @@ class LoginContainer extends Component {
   handleLogin = async () => {
     // e.preventDefault();
     let { email, password } = this.state;
-    const response = await userService.login({ email, password });
+    const response = await UserService.login({ email, password });
     // console.log(response);
     if (response.success) {
       toast.success('Login successful');

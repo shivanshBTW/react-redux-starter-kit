@@ -4,7 +4,7 @@ class RoutePath {
 
    static settingsPath = '/settings';
 
-   static statsPath = '/stats';
+   static landingPagePath = '/landing';
    static detailedList = (id = ':id') => `/stats/${id}`;
 
    static navigateTo(props, path) {

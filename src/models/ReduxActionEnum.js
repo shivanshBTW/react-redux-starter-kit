@@ -4,7 +4,7 @@ class ReduxActionEnum {
   static LOGOUT_ACTION = "logout";
 
   //Settings
-  static SET_DARK_MODE;
+  static SET_DARK_MODE = "setDarkMode";
 
 }
 
