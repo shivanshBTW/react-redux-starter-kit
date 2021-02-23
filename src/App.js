@@ -15,6 +15,7 @@ import LightStylesConfig from './lib/StyleConfigs/ColorsConfig/LightStylesConfig
 import LoginContainer from './components/LoginContainer/LoginContainer';
 import MomentUtils from '@date-io/moment';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import PrivateRoute from './util/PrivateRoute';
 import RoutePath from './lib/RoutePath';
 import SettingsActions from './redux/actions/SettingsActions';
 import { ThemeProvider } from '@material-ui/styles';
@@ -31,28 +32,6 @@ const toastConfiguration = {
   // pauseOnHover: true
   //etc you get the idea
 };
-
-let PrivateRoute = (props) => {
-  let { component: Component, authorized, ...rest } = props;
-  return (
-    <Route
-      {...rest}
-      component={(props) =>
-        authorized ? (
-          <Component {...props} {...rest} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: RoutePath.loginPath,
-              state: { from: props.location },
-            }}
-          />
-        )
-      }
-    />
-  );
-};
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -85,15 +64,16 @@ class App extends Component {
 
   getLocalStorageConfigSettings = () => {
     let config = JSON.parse(localStorage.getItem('config'));
-    // console.log(config);
+    console.log(config);
     // config && this.props.setTouchlessMode(!!config.isTouchlessMode)
     // this.props.setDarkMode(true);
-    this.props.setDarkMode(!!config?.isDarkMode);
+    this.props.setDarkMode(!config?.isDarkMode);
     // config && this.setState({prefersDarkTheme: !!config.isDarkMode})
   };
 
   render() {
     const { classes, isDarkMode } = this.props;
+    console.log('isDarkMode', isDarkMode);
     if (this.state.loggedIn === undefined) {
       return <></>;
     } else {

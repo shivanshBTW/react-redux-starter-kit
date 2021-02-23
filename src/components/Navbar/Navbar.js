@@ -1,4 +1,4 @@
-import { ButtonBase, Typography } from '@material-ui/core';
+import { ButtonBase, ListItem, Typography } from '@material-ui/core';
 import { NavLink, withRouter } from 'react-router-dom';
 import React, { Component } from 'react';
 
@@ -18,6 +18,9 @@ import IconButton from '@material-ui/core/IconButton';
 import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
 import LightStylesConfig from '../../lib/StyleConfigs/ColorsConfig/LightStylesConfig';
 import List from '@material-ui/core/List';
+import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
@@ -30,6 +33,7 @@ import RoutePath from '../../lib/RoutePath';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import Toolbar from '@material-ui/core/Toolbar';
 import UserActions from '../../redux/actions/UserActions';
+import { capitalizeFirstLetter } from '../../util/CommonUtils';
 import clsx from 'clsx';
 import { connect } from 'react-redux';
 // import { isMobile } from 'mobile-device-detect';
@@ -141,15 +145,19 @@ class Navbar extends Component {
       </>
     );
 
+     const appBarVariant = 'dense';
+   //  const appBarVariant = 'regular';
+
     return (
       <div className={classes.root}>
         <CssBaseline />
         <AppBar
           position="fixed"
           className={clsx(classes.appBar)}
-          color={'default'}
+          color={'primary'}
+          //  color={'default'}
         >
-          <Toolbar>
+          <Toolbar variant={appBarVariant}>
             {isMobileBrowser ? null : (
               <IconButton
                 color="inherit"
@@ -173,8 +181,9 @@ class Navbar extends Component {
               <a
                 href="https://www.github.com/shivanshBTW"
                 style={{
-                  textDecoration: 'none',
-                  '&::hover': { textDecoration: 'underline' },
+                  // textDecoration: 'none',
+                  color: 'white',
+                  // '&::hover': { textDecoration: 'underline' },
                 }}
               >
                 @shivanshBTW
@@ -233,12 +242,12 @@ class Navbar extends Component {
               className={classes.mobileAppBar}
             >
               <Toolbar>
-                {/* <Grid container direction="row" justify="space-around">
+                <Grid container direction="row" justify="space-around">
                   <Grid item>
                     <ButtonBase
                       component={NavLink}
                       exact
-                      to={RoutePath.engineList}
+                      to={RoutePath.landingPagePath}
                       className={classes.mobileNavLink}
                       activeClassName={
                         isDarkMode
@@ -249,7 +258,7 @@ class Navbar extends Component {
                       <ListAltTwoToneIcon fontSize={'inherit'} />
                     </ButtonBase>
                   </Grid>
-                </Grid> */}
+                </Grid>
               </Toolbar>
             </AppBar>
           </>
@@ -269,12 +278,16 @@ class Navbar extends Component {
                 }),
               }}
             >
-              <div className={classes.toolbar} />
+              <div
+                className={
+                  classes['toolbar' + capitalizeFirstLetter(appBarVariant)]
+                }
+              />
               <Divider />
               <List>
-                {/* <NavLink
+                <NavLink
                   exact
-                  to={RoutePath.engineList}
+                  to={RoutePath.landingPagePath}
                   className={classes.drawerTab}
                   activeClassName={
                     isDarkMode
@@ -290,15 +303,19 @@ class Navbar extends Component {
                     <ListItemIcon className={classes.drawerIcon}>
                       <ListAltTwoToneIcon />
                     </ListItemIcon>
-                    <ListItemText>Engine List</ListItemText>
+                    <ListItemText>Landing Page</ListItemText>
                   </ListItem>
-                </NavLink> */}
+                </NavLink>
               </List>
             </Drawer>
           </ThemeProvider>
         )}
         <main className={classes.content}>
-          <div className={classes.toolbar} />
+          <div
+            className={
+              classes['toolbar' + capitalizeFirstLetter(appBarVariant)]
+            }
+          />
           {children}
         </main>
       </div>

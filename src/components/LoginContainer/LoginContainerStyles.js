@@ -1,7 +1,7 @@
 let LoginContainerStyles = theme => ({
    root: {
       // margin: theme.spacing(0),
-      backgroundColor: theme.palette.background.default
+      // backgroundColor: theme.palette.background.default
    },
    paper: {
       paddingTop: theme.spacing(8),

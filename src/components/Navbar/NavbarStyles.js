@@ -67,7 +67,7 @@ let NavbarStyles = (theme) => ({
   mobileAppBar: {
     top: 'auto',
     bottom: 0,
-    backgroundColor: '#204e79',
+    // backgroundColor: '#204e79',
   },
   mobileFabButton: {
     position: 'absolute',
@@ -113,7 +113,7 @@ let NavbarStyles = (theme) => ({
     whiteSpace: 'nowrap',
   },
   drawerBackground: {
-    backgroundColor: '#204e79',
+    // backgroundColor: '#204e79',
   },
   drawerOpen: {
     width: drawerWidth,
@@ -178,13 +178,21 @@ let NavbarStyles = (theme) => ({
       },
     },
   },
-  toolbar: {
+  toolbarRegular: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
+  },
+  toolbarDense: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbarDense,
   },
 
   buttonsContainer: {

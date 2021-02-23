@@ -1,6 +1,6 @@
 const SettingsInitialState = {
-   isDarkMode: true,
-   // isDarkMode: false,
+   // isDarkMode: true,
+   isDarkMode: false,
 };
 
 export default SettingsInitialState;
