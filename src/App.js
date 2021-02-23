@@ -67,7 +67,7 @@ class App extends Component {
     console.log(config);
     // config && this.props.setTouchlessMode(!!config.isTouchlessMode)
     // this.props.setDarkMode(true);
-    this.props.setDarkMode(!config?.isDarkMode);
+    this.props.setDarkMode(!!config?.isDarkMode);
     // config && this.setState({prefersDarkTheme: !!config.isDarkMode})
   };
 

@@ -6,7 +6,9 @@ import Navbar from '../Navbar/Navbar';
 import PrivateRoute from '../../util/PrivateRoute';
 import { Redirect } from 'react-router-dom';
 import RoutePath from '../../lib/RoutePath';
+import { Settings } from '@material-ui/icons';
 import SettingsActions from '../../redux/actions/SettingsActions';
+import SettingsPage from '../SettingsPage/SettingsPage';
 import { Switch } from 'react-router-dom';
 import UserActions from '../../redux/actions/UserActions';
 import { connect } from 'react-redux';
@@ -28,6 +30,12 @@ class AppContainer extends Component {
               path={RoutePath.landingPagePath}
               authorized={this.props.loggedIn}
               component={LandingPage}
+            />
+            <PrivateRoute
+              exact
+              path={RoutePath.settingsPath}
+              authorized={this.props.loggedIn}
+              component={SettingsPage}
             />
 
             {/* <PrivateRoute

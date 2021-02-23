@@ -30,6 +30,7 @@ import Paper from '@material-ui/core/Paper';
 import PeopleAltTwoToneIcon from '@material-ui/icons/PeopleAltTwoTone';
 import Popper from '@material-ui/core/Popper';
 import RoutePath from '../../lib/RoutePath';
+import SettingsApplicationsTwoToneIcon from '@material-ui/icons/SettingsApplicationsTwoTone';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import Toolbar from '@material-ui/core/Toolbar';
 import UserActions from '../../redux/actions/UserActions';
@@ -145,8 +146,8 @@ class Navbar extends Component {
       </>
     );
 
-     const appBarVariant = 'dense';
-   //  const appBarVariant = 'regular';
+    const appBarVariant = 'dense';
+    //  const appBarVariant = 'regular';
 
     return (
       <div className={classes.root}>
@@ -258,6 +259,22 @@ class Navbar extends Component {
                       <ListAltTwoToneIcon fontSize={'inherit'} />
                     </ButtonBase>
                   </Grid>
+
+                  <Grid item>
+                    <ButtonBase
+                      component={NavLink}
+                      exact
+                      to={RoutePath.settingsPath}
+                      className={classes.mobileNavLink}
+                      activeClassName={
+                        isDarkMode
+                          ? classes.activeNavLinkDarkMode
+                          : classes.activeNavLink
+                      }
+                    >
+                      <SettingsApplicationsTwoToneIcon fontSize={'inherit'} />
+                    </ButtonBase>
+                  </Grid>
                 </Grid>
               </Toolbar>
             </AppBar>
@@ -302,6 +319,28 @@ class Navbar extends Component {
                   >
                     <ListItemIcon className={classes.drawerIcon}>
                       <ListAltTwoToneIcon />
+                    </ListItemIcon>
+                    <ListItemText>Landing Page</ListItemText>
+                  </ListItem>
+                </NavLink>
+
+                <NavLink
+                  exact
+                  to={RoutePath.settingsPath}
+                  className={classes.drawerTab}
+                  activeClassName={
+                    isDarkMode
+                      ? classes.activeDrawerTabDarkMode
+                      : classes.activeDrawerTab
+                  }
+                >
+                  <ListItem
+                    button
+                    variant={'contained'}
+                    className={classes.drawerItem}
+                  >
+                    <ListItemIcon className={classes.drawerIcon}>
+                      <SettingsApplicationsTwoToneIcon />
                     </ListItemIcon>
                     <ListItemText>Landing Page</ListItemText>
                   </ListItem>
