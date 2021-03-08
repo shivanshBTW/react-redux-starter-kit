@@ -5,6 +5,9 @@ let SettingsPageStyles = (theme) => ({
     display: 'flex',
     minHeight: 224,
     maxWidth: 900,
+    '@media(max-width:600px)': {
+      margin: 10,
+    },
     margin: '100px auto 0',
   },
   tabs: {

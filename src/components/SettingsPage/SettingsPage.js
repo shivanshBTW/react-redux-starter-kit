@@ -67,7 +67,7 @@ class SettingsPage extends Component {
       <div className={classes.root}>
         {/*SettingsPage*/}
         <Grid component={Paper} container direction="row">
-          <Grid item>
+          <Grid item xs={3}>
             <Tabs
               orientation="vertical"
               variant="scrollable"
@@ -84,7 +84,7 @@ class SettingsPage extends Component {
           <Grid item>
             <Divider orientation="vertical" />
           </Grid>
-          <Grid item>
+          <Grid item xs={8}>
             <TabPanel value={tabValue} index={0}>
               <AppSettings />
             </TabPanel>
