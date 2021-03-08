@@ -24,6 +24,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
+import NavbarAppBar from './NavbarAppBar/NavbarAppBar';
+import NavbarConfig from './NavbarConfig';
 import NavbarStyles from './NavbarStyles';
 import NotificationsRoundedIcon from '@material-ui/icons/NotificationsRounded';
 import Paper from '@material-ui/core/Paper';
@@ -48,7 +50,6 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      drawerOpen: false,
       newRegistrationModalOpenFlag: false,
       accountMenuAnchorEl: null,
       addEngineModalOpenFlag: false,
@@ -77,18 +78,6 @@ class Navbar extends Component {
     this.setState({ newRegistrationModalOpenFlag: false });
   };
 
-  setAccountMenuAnchorEl = (accountMenuAnchorEl) => {
-    this.setState({ accountMenuAnchorEl });
-  };
-
-  handleAccountMenuOpen = (event) => {
-    this.setAccountMenuAnchorEl(event.currentTarget);
-  };
-
-  handleAccountMenuClose = () => {
-    this.setAccountMenuAnchorEl(null);
-  };
-
   handleOpenAddEngineModal = () => {
     this.setState({ addEngineModalOpenFlag: true });
   };
@@ -98,19 +87,8 @@ class Navbar extends Component {
   };
 
   render() {
-    let {
-      classes,
-      width,
-      isDarkMode,
-      children,
-      loggedUser,
-    } = this.props;
-    const {
-      drawerOpen,
-      accountMenuAnchorEl,
-      addEngineModalOpenFlag,
-    } = this.state;
-    const isAccountMenuOpen = Boolean(accountMenuAnchorEl);
+    let { classes, width, isDarkMode, children, loggedUser } = this.props;
+    const { drawerOpen, addEngineModalOpenFlag } = this.state;
 
     // let md = new MobileDetect();
     //  console.log('isMobile', isMobile);
@@ -123,7 +101,11 @@ class Navbar extends Component {
       <div className={classes.root}>
         <CssBaseline />
 
-        <NavbarAppBar width={width} />
+        <NavbarAppBar
+          drawerOpen={drawerOpen}
+          handleDrawerToggle={this.handleDrawerToggle}
+          width={width}
+        />
 
         {isMobileBrowser ? (
           <>
